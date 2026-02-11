@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "../atoms/Button";
 import { Illustration } from "../atoms/Illustrastion";
 // import { AboutText } from "../molecules/AboutText"; // Supprimé si inutilisé
-import PixelSnow from "~/components/organisms/PixelSnow";
+import PixelSnow from "~/components/atoms/react-bits/PixelSnow";
 
 const ABOUT_PARAGRAPHS = [
   "I'm a full-stack developer who writes code that doesn't just run; it solves problems.",
