@@ -9,29 +9,55 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAncho
 }
 
 const variantStyles: Record<Variant, string> = {
-    primary:
-        "bg-[#1A1A1A] text-white shadow-[0_4px_0_0_rgba(0,0,0,1)] hover:shadow-[0_2px_0_0_rgba(0,0,0,1)] hover:translate-y-[2px] active:shadow-none active:translate-y-[4px] border border-white/10",
-    outline:
-        "border-2 border-[#1A1A1A] text-[#1A1A1A] bg-white shadow-[0_4px_0_0_rgba(26,26,26,1)] hover:shadow-[0_2px_0_0_rgba(26,26,26,1)] hover:translate-y-[2px] active:shadow-none active:translate-y-[4px]",
+    primary: `
+        bg-[#1A1A1A] text-white 
+        border-t border-white/20
+        shadow-[0_4px_0_0_#000] 
+        hover:shadow-[0_2px_0_0_#000] 
+        active:shadow-none
+    `,
+    outline: `
+        bg-white text-[#1A1A1A] 
+        border-2 border-[#1A1A1A]
+        shadow-[0_4px_0_0_#1A1A1A] 
+        hover:shadow-[0_2px_0_0_#1A1A1A] 
+        active:shadow-none
+    `,
 };
 
-/**
- * Button avec profondeur et effet "tactile" 3D
- */
 export function Button({
     variant = "primary",
     href,
     external = false,
     children,
     className = "",
+    disabled,
     ...props
 }: ButtonProps) {
-    const base =
-        "inline-flex items-center justify-center rounded-xl px-6 py-2.5 text-sm font-bold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 select-none";
+    const base = `
+        inline-flex items-center justify-center 
+        rounded-xl px-6 py-2.5 
+        text-sm font-[800] uppercase tracking-tight
+        transition-all duration-100 
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-900 
+        select-none
+        /* Gestion du mouvement 3D */
+        hover:translate-y-[2px] 
+        active:translate-y-[4px]
+        /* État désactivé */
+        disabled:opacity-50 disabled:pointer-events-none disabled:shadow-none disabled:translate-y-0
+    `;
 
     const classes = `${base} ${variantStyles[variant]} ${className}`;
 
-    if (href) {
+    // Contenu commun (pour gérer les icônes par exemple)
+    const content = (
+        <span className="flex items-center gap-2">
+            {children}
+        </span>
+    );
+
+    if (href && !disabled) {
         return (
             <a
                 href={href}
@@ -39,14 +65,14 @@ export function Button({
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 {...(props as any)}
             >
-                {children}
+                {content}
             </a>
         );
     }
 
     return (
-        <button className={classes} {...(props as any)}>
-            {children}
+        <button className={classes} disabled={disabled} {...(props as any)}>
+            {content}
         </button>
     );
 }
