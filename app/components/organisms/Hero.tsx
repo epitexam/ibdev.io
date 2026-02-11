@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import { Avatar } from "../atoms/Avatar";
 import { Button } from "../atoms/Button";
 import { HeroContacts } from "../molecules/HeroContacts";
@@ -34,7 +35,7 @@ export function Hero() {
 
             <div className="mt-8 flex flex-col items-center gap-4">
                 <Button href="#contact" variant="primary" className="px-8 shadow-lg">
-                    Contact me →
+                    Contact me <ChevronRight />
                 </Button>
 
                 <HeroContacts email="mamun@example.com" />
