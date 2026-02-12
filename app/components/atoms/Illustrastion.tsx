@@ -6,12 +6,6 @@ interface IllustrationProps {
     className?: string;
 }
 
-/**
- * Illustration atom.
- * - Si `src` est fourni → affiche l'image.
- * - Sinon → SVG placeholder d'un développeur à son bureau,
- *   fidèle à la maquette (tons chauds, lampe, bureau).
- */
 export function Illustration({
     src,
     alt = "Developer illustration",
@@ -40,80 +34,48 @@ export function Illustration({
             xmlns="http://www.w3.org/2000/svg"
             aria-label={alt}
             role="img"
-            className={className}
+            className={`${className} drop-shadow-sm`}
         >
-            {/* Wall background */}
-            <rect width="280" height="260" fill="#FDF6F0" rx="16" />
 
-            {/* Desk */}
-            <rect x="30" y="180" width="220" height="14" rx="4" fill="#C9A882" />
-            <rect x="50" y="194" width="12" height="40" rx="3" fill="#B8956E" />
-            <rect x="218" y="194" width="12" height="40" rx="3" fill="#B8956E" />
+            {/* Mur / Fond de l'illustration */}
+            <rect x="5" y="5" width="270" height="250" rx="20" fill="#FDF6F0" stroke="#1A1A1A" strokeWidth="3" />
 
-            {/* Monitor */}
-            <rect x="90" y="110" width="100" height="68" rx="6" fill="#1F2937" />
-            <rect x="96" y="116" width="88" height="56" rx="4" fill="#111827" />
-            {/* Code lines on screen */}
-            <rect x="102" y="124" width="40" height="4" rx="2" fill="#F97316" />
-            <rect x="102" y="133" width="60" height="4" rx="2" fill="#6EE7B7" />
-            <rect x="102" y="142" width="50" height="4" rx="2" fill="#93C5FD" />
-            <rect x="102" y="151" width="35" height="4" rx="2" fill="#6EE7B7" />
-            <rect x="102" y="160" width="55" height="4" rx="2" fill="#F97316" />
-            {/* Monitor stand */}
-            <rect x="133" y="178" width="14" height="10" rx="2" fill="#374151" />
-            <rect x="122" y="186" width="36" height="5" rx="2" fill="#374151" />
+            {/* Bureau (Épais et solide) */}
+            <rect x="25" y="185" width="230" height="12" rx="4" fill="#C9A882" stroke="#1A1A1A" strokeWidth="2.5" />
+            <rect x="45" y="197" width="10" height="30" rx="2" fill="#B8956E" stroke="#1A1A1A" strokeWidth="2" />
+            <rect x="225" y="197" width="10" height="30" rx="2" fill="#B8956E" stroke="#1A1A1A" strokeWidth="2" />
 
-            {/* Lamp */}
-            <rect x="195" y="120" width="5" height="60" rx="2" fill="#9CA3AF" />
-            <rect x="185" y="115" width="30" height="5" rx="2" fill="#9CA3AF"
-                transform="rotate(-20 185 115)" />
-            <ellipse cx="208" cy="108" rx="18" ry="10"
-                fill="#FDE68A" opacity="0.9" />
-            <ellipse cx="208" cy="110" rx="12" ry="6" fill="#FCD34D" />
+            {/* Moniteur (Style Cyberpunk / Retro) */}
+            <rect x="85" y="105" width="110" height="75" rx="8" fill="#1F2937" stroke="#1A1A1A" strokeWidth="3" />
+            <rect x="92" y="112" width="96" height="61" rx="4" fill="#111827" />
 
-            {/* Chair back */}
-            <rect x="118" y="195" width="44" height="36" rx="8" fill="#E5793B" />
+            {/* Lignes de Code (Glow effect) */}
+            <rect x="100" y="122" width="45" height="4" rx="2" fill="#E15A3E" />
+            <rect x="100" y="132" width="65" height="4" rx="2" fill="#22C55E" />
+            <rect x="100" y="142" width="55" height="4" rx="2" fill="#3B82F6" />
+            <rect x="100" y="152" width="40" height="4" rx="2" fill="#22C55E" />
 
-            {/* Person body */}
-            <rect x="122" y="155" width="36" height="42" rx="8" fill="#F97316" />
+            {/* Le Développeur (Style Avatar Blocky) */}
+            {/* Corps */}
+            <rect x="115" y="165" width="50" height="45" rx="10" fill="#E15A3E" stroke="#1A1A1A" strokeWidth="2.5" />
+            {/* Tête */}
+            <circle cx="140" cy="135" r="22" fill="#FBBF7A" stroke="#1A1A1A" strokeWidth="2.5" />
+            {/* Cheveux / Casque */}
+            <path d="M118 135 C118 110 162 110 162 135" stroke="#1A1A1A" strokeWidth="6" fill="none" />
+            {/* Yeux focus */}
+            <rect x="130" y="132" width="4" height="4" rx="1" fill="#1A1A1A" />
+            <rect x="146" y="132" width="4" height="4" rx="1" fill="#1A1A1A" />
 
-            {/* Person head */}
-            <circle cx="140" cy="138" r="18" fill="#FBBF7A" />
-            {/* Hair */}
-            <path d="M122 132 Q130 118 140 116 Q150 118 158 132 Q154 120 140 118 Q126 120 122 132Z"
-                fill="#1F2937" />
-            {/* Eyes */}
-            <circle cx="134" cy="136" r="2.5" fill="#1F2937" />
-            <circle cx="146" cy="136" r="2.5" fill="#1F2937" />
-            {/* Slight smile */}
-            <path d="M135 143 Q140 147 145 143"
-                stroke="#1F2937" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+            {/* Lampe de bureau (L'accent de couleur) */}
+            <path d="M210 185 L210 130" stroke="#1A1A1A" strokeWidth="3" />
+            <path d="M210 130 L190 120" stroke="#1A1A1A" strokeWidth="3" />
+            <circle cx="185" cy="115" r="12" fill="#FDE68A" stroke="#1A1A1A" strokeWidth="2" />
 
-            {/* Left arm reaching to keyboard */}
-            <path d="M122 168 Q100 175 88 182"
-                stroke="#F97316" strokeWidth="10" strokeLinecap="round" fill="none" />
-            {/* Right arm */}
-            <path d="M158 168 Q175 175 186 182"
-                stroke="#F97316" strokeWidth="10" strokeLinecap="round" fill="none" />
+            {/* Accessoires (Plante & Livres) */}
+            <rect x="40" y="165" width="20" height="20" rx="3" fill="#FB923C" stroke="#1A1A1A" strokeWidth="2" />
+            <path d="M50 165 C50 145 35 145 40 165" fill="#22C55E" stroke="#1A1A1A" strokeWidth="1.5" />
 
-            {/* Keyboard */}
-            <rect x="78" y="179" width="60" height="10" rx="3" fill="#D1D5DB" />
-            <rect x="82" y="182" width="8" height="4" rx="1" fill="#9CA3AF" />
-            <rect x="93" y="182" width="8" height="4" rx="1" fill="#9CA3AF" />
-            <rect x="104" y="182" width="8" height="4" rx="1" fill="#9CA3AF" />
-            <rect x="115" y="182" width="8" height="4" rx="1" fill="#9CA3AF" />
-
-            {/* Small plant pot */}
-            <rect x="36" y="160" width="24" height="20" rx="4" fill="#FB923C" />
-            <path d="M42 160 Q48 140 56 148 Q48 148 48 158"
-                fill="#4ADE80" />
-            <path d="M54 160 Q44 138 38 146 Q46 148 48 158"
-                fill="#22C55E" />
-
-            {/* Books on desk corner */}
-            <rect x="220" y="162" width="30" height="18" rx="2" fill="#60A5FA" />
-            <rect x="222" y="156" width="26" height="18" rx="2" fill="#F472B6" />
-            <rect x="224" y="150" width="22" height="18" rx="2" fill="#A78BFA" />
+            <rect x="220" y="165" width="25" height="20" rx="2" fill="#3B82F6" stroke="#1A1A1A" strokeWidth="2" />
         </svg>
     );
 }
