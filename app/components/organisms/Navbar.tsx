@@ -32,7 +32,7 @@ export function Navbar() {
             >
 
                 <div className="pl-2">
-                    <Logo text={"J.B"}/>
+                    <Logo text={"J.B"} />
                 </div>
 
                 <nav className="hidden md:block">
@@ -47,7 +47,7 @@ export function Navbar() {
                     <Button
                         href={RESUME_URL}
                         external
-                        className="rounded-full px-6 py-2 text-sm font-semibold"
+                        showChevron={true}
                     >
                         My resume
                     </Button>

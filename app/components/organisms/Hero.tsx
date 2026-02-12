@@ -1,31 +1,33 @@
-import { ChevronRight } from "lucide-react";
 import { Avatar } from "../atoms/Avatar";
 import { Button } from "../atoms/Button";
+import { StatusBadge } from "../atoms/StatusBadge";
 import { HeroContacts } from "../molecules/HeroContacts";
 import { HeroText } from "../molecules/HeroText";
 
-
-/**
- * Hero organism — assembles:
- *   Avatar → HeroText → Button CTA → HeroContacts
- *
- * Toutes les données sont centralisées ici pour les retrouver facilement.
- * À terme, elles pourront venir d'un fichier de config ou d'une API.
- */
-/**
- * Hero organism — Corrigé pour un espacement plus compact et maîtrisé.
- */
 export function Hero() {
     return (
         <section
             id="hero"
-            className="relative flex flex-col items-center px-4 pt-32 pb-16 text-center"
+            className="relative flex flex-col items-center justify-center px-6 pt-15 pb-20 text-center min-h-[20vh]"
         >
-            <div className="mb-6">
+
+            <div className="relative mb-10">
                 <Avatar size={120} />
+
+                <StatusBadge
+                    label="Available"
+                    color="green"
+                    className="absolute -bottom-3 -right-6 scale-90"
+                />
             </div>
 
-            <div className="max-w-3xl space-y-4">
+
+            <div className="max-w-3xl flex flex-col items-center gap-6">
+
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">
+                    // Welcome to my core_system
+                </span>
+
                 <HeroText
                     name="Jérémy"
                     title="I Build Full-Stack Stuff That Actually Works!"
@@ -33,10 +35,22 @@ export function Hero() {
                 />
             </div>
 
-            <div className="mt-8 flex flex-col items-center gap-4">
-                <Button href="#contact" variant="primary" className="px-8 shadow-lg">
-                    Contact me <ChevronRight />
+
+            <div className="mt-12 flex flex-col items-center gap-8 w-full">
+                <Button
+                    href="#contact"
+                    variant="accent"
+                    showChevron={true}
+                    className="px-10 py-4"
+                >
+                    Contact me
                 </Button>
+
+                <div className="flex items-center gap-4 w-full max-w-50">
+                    <div className="h-px w-full bg-gray-900/10" />
+                    <span className="text-[10px] font-black text-gray-300">OR</span>
+                    <div className="h-px w-full bg-gray-900/10" />
+                </div>
 
                 <HeroContacts email="mamun@example.com" />
             </div>
