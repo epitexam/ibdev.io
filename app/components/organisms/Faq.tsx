@@ -6,7 +6,7 @@ import { SectionTitle } from "../atoms/SectionTitle";
 export function FAQ() {
     return (
         <section id="faq" className="">
-            <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+            <div className="mx-auto max-w-6xl px-5 py-20 md:py-30">
 
                 <div className="mb-16 flex flex-col items-center text-center">
                     <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#E15A3E] mb-4">
@@ -30,11 +30,11 @@ export function FAQ() {
                         <div className="mt-6 hidden md:block px-2">
                             <div className="flex items-center gap-2 mb-2">
                                 <div className="h-1 w-1 rounded-full bg-green-500 animate-pulse" />
-                                <span className="text-[9px] font-bold uppercase tracking-widest text-gray-400">
+                                <span className="text-[12px] font-bold uppercase tracking-widest text-gray-400">
                                     Support_Agent: Online
                                 </span>
                             </div>
-                            <p className="text-[9px] text-gray-300 font-medium leading-tight uppercase">
+                            <p className="text-[10px]  font-medium leading-tight uppercase">
                                 Response time: &lt; 24h // Average_Sync: 98%
                             </p>
                         </div>
