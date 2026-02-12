@@ -22,7 +22,7 @@ export function SectionTitle({
 
     return (
         <div className={`flex flex-col gap-1 ${alignClass} ${className}`}>
-            <h2 className="text-3xl font-black leading-tight tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-black leading-tight tracking-tight text-gray-900 sm:text-5xl">
                 {title}
             </h2>
             {subtitle && (
