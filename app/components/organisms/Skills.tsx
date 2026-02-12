@@ -1,50 +1,36 @@
 import { SKILLS_DATA } from "~/data/skills";
 import { SectionTitle } from "../atoms/SectionTitle";
 import { SkillCategoryRow } from "../molecules/SkillCategoryRow";
-
+import { Logo } from "../atoms/Logo";
 
 /**
- * Skills organism — affiche le titre + tableau des compétences.
- *
- * Design :
- * - Fond blanc
- * - Tableau avec deux colonnes : Category | Tools & Tech
- * - Header du tableau en gris clair
- * - Lignes séparées par bordures subtiles
- *
- * Respecte SOLID :
- * - S : affiche uniquement la section Skills
- * - O : si on veut changer la source de données, on passe une prop `data`
- * - L : comportement prévisible
- * - I : pas de props pour l'instant (données hard-codées), évolutif si besoin
- * - D : dépend de SKILLS_DATA (abstraction), pas de logique métier interne
+ * Skills Organism — Style "Technical Data Sheet"
+ * - Conteneur avec ombre portée solide (cohérence 3D)
+ * - Header contrasté et typographie robuste
  */
 export function Skills() {
     return (
-        <section id="skills" className="bg-white">
-            <div className="mx-auto max-w-3xl px-4 py-24 sm:px-6 lg:px-8">
+        <section id="skills" className="relative">
+            <div className="mx-auto max-w-4xl px-6 py-24">
 
-                {/* Titre centré */}
-                <div className="mb-12 flex justify-center">
-                    <SectionTitle title="My Skills & Stack" align="center" />
+                <div className="mb-16 flex flex-col items-center gap-2">
+                    <SectionTitle title="Technical Stack" align="center" />
+                    <Logo text={"Engineering & Tools"} />
                 </div>
 
-                {/* Tableau */}
-                <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+                <div className="relative overflow-hidden rounded-2xl border-2 border-gray-900 bg-white shadow-[12px_12px_0_0_#1A1A1A]">
 
-                    {/* Header du tableau */}
-                    <div className="grid grid-cols-[140px_1fr] gap-6 border-b border-gray-200 bg-gray-50 px-6 py-3">
-                        <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                            Category
+                    <div className="hidden md:grid grid-cols-[200px_1fr] gap-8 border-b-2 border-gray-900 bg-gray-50 px-8 py-4">
+                        <div className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">
+                            Category Label
                         </div>
-                        <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                            Tools & Tech
+                        <div className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">
+                            Technologies / Ecosystem
                         </div>
                     </div>
 
-                    {/* Body du tableau */}
-                    <div className="px-6">
-                        {SKILLS_DATA.categories.map((cat) => (
+                    <div className="divide-y divide-gray-100 px-8">
+                        {SKILLS_DATA.categories.map((cat, index) => (
                             <SkillCategoryRow
                                 key={cat.category}
                                 category={cat.category}
@@ -53,6 +39,16 @@ export function Skills() {
                         ))}
                     </div>
 
+                    <div className="bg-gray-50 px-8 py-2 border-t border-gray-100 flex justify-between items-center">
+                        <div className="text-[9px] font-mono text-gray-300 uppercase">
+                            Build: v1.0.26 // JEREMY_STK
+                        </div>
+                        <div className="flex gap-1">
+                            <div className="h-1.5 w-1.5 rounded-full bg-gray-200" />
+                            <div className="h-1.5 w-1.5 rounded-full bg-gray-200" />
+                            <div className="h-1.5 w-1.5 rounded-full bg-gray-200" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
