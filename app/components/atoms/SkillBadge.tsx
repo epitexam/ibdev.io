@@ -4,21 +4,29 @@ interface SkillBadgeProps {
 }
 
 /**
- * Badge pour une technologie individuelle.
- * Design : fond gris clair, texte petit, arrondi léger.
- *
- * Respecte SOLID :
- * - S : affiche uniquement un badge
- * - O : extensible via className
- * - L : comportement prévisible
- * - I : interface minimale (juste name)
- * - D : ne dépend que du string passé
+ * SkillBadge — Style "Micro-chip"
+ * - Bordure contrastée pour l'aspect technique
+ * - Effet de relief discret au survol
+ * - Typographie typée "Data"
  */
 export function SkillBadge({ name, className = "" }: SkillBadgeProps) {
     return (
         <span
-            className={`inline-block rounded-md bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-200 ${className}`}
+            className={`
+                inline-flex items-center justify-center
+                rounded-md border border-gray-300 bg-white/50
+                px-3 py-1 text-[11px] font-black uppercase tracking-wider text-gray-800
+                backdrop-blur-[2px]
+                /* Animation & Hover */
+                transition-all duration-200 ease-in-out
+                hover:border-gray-900 hover:bg-white hover:text-black
+                hover:shadow-[2px_2px_0_0_#1A1A1A]
+                hover:-translate-x-px hover:-translate-y-px
+                cursor-default select-none
+                ${className}
+            `}
         >
+            <span className="mr-1.5 h-1 w-1 rounded-full bg-gray-400 group-hover:bg-[#E15A3E]" />
             {name}
         </span>
     );
