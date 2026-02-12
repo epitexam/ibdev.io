@@ -32,7 +32,7 @@ export function Navbar() {
             >
 
                 <div className="pl-2">
-                    <Logo text={"Jérémy"}/>
+                    <Logo text={"J.B"}/>
                 </div>
 
                 <nav className="hidden md:block">
