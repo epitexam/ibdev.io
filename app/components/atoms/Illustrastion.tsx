@@ -1,16 +1,12 @@
 interface IllustrationProps {
     src?: string;
     alt?: string;
-    width?: number;
-    height?: number;
     className?: string;
 }
 
 export function Illustration({
     src,
     alt = "Developer illustration",
-    width = 280,
-    height = 260,
     className = "",
 }: IllustrationProps) {
     if (src) {
@@ -18,64 +14,90 @@ export function Illustration({
             <img
                 src={src}
                 alt={alt}
-                width={width}
-                height={height}
-                className={`object-contain ${className}`}
+                className={`h-auto w-full object-contain ${className}`}
             />
         );
     }
 
     return (
         <svg
-            width={width}
-            height={height}
             viewBox="0 0 280 260"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             aria-label={alt}
             role="img"
-            className={`${className} drop-shadow-sm`}
+            /* On utilise h-full w-full pour que le SVG remplisse son parent.
+               Le parent (dans About.tsx) gère la taille réelle.
+            */
+            className={`h-full w-full transition-transform duration-500 ${className}`}
         >
+            <defs>
+                <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="100%" stopColor="#f8fafc" />
+                </linearGradient>
 
-            {/* Mur / Fond de l'illustration */}
-            <rect x="5" y="5" width="270" height="250" rx="20" fill="#FDF6F0" stroke="#1A1A1A" strokeWidth="3" />
+                <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#F1F5F9" />
+                    <stop offset="100%" stopColor="#ffffff" />
+                </linearGradient>
 
-            {/* Bureau (Épais et solide) */}
-            <rect x="25" y="185" width="230" height="12" rx="4" fill="#C9A882" stroke="#1A1A1A" strokeWidth="2.5" />
-            <rect x="45" y="197" width="10" height="30" rx="2" fill="#B8956E" stroke="#1A1A1A" strokeWidth="2" />
-            <rect x="225" y="197" width="10" height="30" rx="2" fill="#B8956E" stroke="#1A1A1A" strokeWidth="2" />
+                <filter id="softShadow" x="-20%" y="-20%" width="150%" height="150%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+                    <feOffset dx="0" dy="4" result="offsetblur" />
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.08" />
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
 
-            {/* Moniteur (Style Cyberpunk / Retro) */}
-            <rect x="85" y="105" width="110" height="75" rx="8" fill="#1F2937" stroke="#1A1A1A" strokeWidth="3" />
-            <rect x="92" y="112" width="96" height="61" rx="4" fill="#111827" />
+            {/* Terminal / Écran */}
+            <g filter="url(#softShadow)">
+                <rect x="40" y="40" width="200" height="130" rx="12" fill="#ffffff" stroke="#f1f5f9" strokeWidth="1" />
 
-            {/* Lignes de Code (Glow effect) */}
-            <rect x="100" y="122" width="45" height="4" rx="2" fill="#E15A3E" />
-            <rect x="100" y="132" width="65" height="4" rx="2" fill="#22C55E" />
-            <rect x="100" y="142" width="55" height="4" rx="2" fill="#3B82F6" />
-            <rect x="100" y="152" width="40" height="4" rx="2" fill="#22C55E" />
+                {/* Barre de titre */}
+                <path d="M40 52C40 45.3726 45.3726 40 52 40H228C234.627 40 240 45.3726 240 52V64H40V52Z" fill="#F8FAFC" />
 
-            {/* Le Développeur (Style Avatar Blocky) */}
-            {/* Corps */}
-            <rect x="115" y="165" width="50" height="45" rx="10" fill="#E15A3E" stroke="#1A1A1A" strokeWidth="2.5" />
-            {/* Tête */}
-            <circle cx="140" cy="135" r="22" fill="#FBBF7A" stroke="#1A1A1A" strokeWidth="2.5" />
-            {/* Cheveux / Casque */}
-            <path d="M118 135 C118 110 162 110 162 135" stroke="#1A1A1A" strokeWidth="6" fill="none" />
-            {/* Yeux focus */}
-            <rect x="130" y="132" width="4" height="4" rx="1" fill="#1A1A1A" />
-            <rect x="146" y="132" width="4" height="4" rx="1" fill="#1A1A1A" />
+                {/* Boutons style rétro-futuriste */}
+                <circle cx="58" cy="52" r="3" fill="#E15A3E" />
+                <circle cx="70" cy="52" r="3" fill="#cbd5e1" />
+                <circle cx="82" cy="52" r="3" fill="#cbd5e1" />
 
-            {/* Lampe de bureau (L'accent de couleur) */}
-            <path d="M210 185 L210 130" stroke="#1A1A1A" strokeWidth="3" />
-            <path d="M210 130 L190 120" stroke="#1A1A1A" strokeWidth="3" />
-            <circle cx="185" cy="115" r="12" fill="#FDE68A" stroke="#1A1A1A" strokeWidth="2" />
+                {/* Écran interne */}
+                <rect x="50" y="74" width="180" height="86" rx="6" fill="url(#screenGradient)" />
 
-            {/* Accessoires (Plante & Livres) */}
-            <rect x="40" y="165" width="20" height="20" rx="3" fill="#FB923C" stroke="#1A1A1A" strokeWidth="2" />
-            <path d="M50 165 C50 145 35 145 40 165" fill="#22C55E" stroke="#1A1A1A" strokeWidth="1.5" />
+                {/* Lignes de code simplifiées avec ton orange */}
+                <g opacity="0.8">
+                    <rect x="62" y="88" width="40" height="3" rx="1.5" fill="#E15A3E" />
+                    <rect x="106" y="88" width="60" height="3" rx="1.5" fill="#cbd5e1" />
+                    <rect x="62" y="98" width="80" height="3" rx="1.5" fill="#cbd5e1" />
+                    <rect x="62" y="108" width="30" height="3" rx="1.5" fill="#E15A3E" />
+                    <rect x="96" y="108" width="50" height="3" rx="1.5" fill="#cbd5e1" />
+                    <rect x="62" y="118" width="70" height="3" rx="1.5" fill="#cbd5e1" />
 
-            <rect x="220" y="165" width="25" height="20" rx="2" fill="#3B82F6" stroke="#1A1A1A" strokeWidth="2" />
+                    {/* Curseur clignotant orange */}
+                    <rect x="62" y="128" width="12" height="3" rx="1.5" fill="#E15A3E">
+                        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+                    </rect>
+                </g>
+            </g>
+
+            {/* Clavier "Blocky" en perspective simplifiée */}
+            <g transform="translate(0, 10)">
+                <rect x="70" y="185" width="140" height="45" rx="10" fill="white" filter="url(#softShadow)" />
+                <rect x="95" y="215" width="90" height="4" rx="2" fill="#f1f5f9" />
+
+                {/* Touches décoratives */}
+                <g opacity="0.4">
+                    {[0, 1, 2, 3, 4].map((i) => (
+                        <rect key={i} x={85 + i * 23} y="195" width="15" height="10" rx="3" fill="#e2e8f0" />
+                    ))}
+                </g>
+            </g>
         </svg>
     );
 }
