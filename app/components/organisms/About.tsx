@@ -10,26 +10,19 @@ const ABOUT_PARAGRAPHS = [
 export function About() {
   return (
     <section id="about" className="relative bg-[#F8F9FA] overflow-hidden py-12 md:py-24">
-      {/* Container principal : Padding adaptatif */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        
-        {/* Le Châssis : Arrondis réduits sur mobile pour gagner de l'espace */}
-        <div className="rounded-[2rem] md:rounded-[3rem] bg-[#E2E8F0]/50 border border-white/50 p-3 sm:p-4 md:p-8 shadow-2xl">
-          
+        <div className="rounded-4xl md:rounded-[3rem] bg-[#E2E8F0]/50 border border-white/50 p-3 sm:p-4 md:p-8 shadow-2xl">
+
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 md:gap-8">
 
-            {/* Module GAUCHE : Illustration / Device */}
-            <div className="relative flex flex-col items-center justify-center rounded-[1.5rem] md:rounded-[2.5rem] bg-[#CBD5E1]/30 border border-white/20 p-6 sm:p-8 md:p-12 shadow-inner min-h-[350px] md:min-h-[500px]">
-              
-              {/* StatusBadge : Taille adaptée et position fixe */}
-              <div className="absolute top-4 left-4 md:top-8 md:left-8">
+            <div className="relative flex flex-col items-center justify-center rounded-3xl md:rounded-[2.5rem] bg-[#CBD5E1]/30 border border-white/20 p-6 sm:p-8 md:p-12 shadow-inner min-h-87.5 md:min-h-125">
+
+              <div className="absolute top-4 left-4 md:top-8 md:left-8 z-20">
                 <StatusBadge color="blue" />
               </div>
 
-              {/* Frame de l'Illustration : Scaling intelligent */}
-              <div className="relative group w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px]">
-                {/* Ombre portée */}
-                <div className="absolute inset-x-4 -bottom-4 h-full rounded-[2rem] bg-gray-950/10 blur-xl transition-all group-hover:blur-2xl" />
+              <div className="relative group w-full max-w-70 sm:max-w-[320px] md:max-w-95">
+                <div className="absolute inset-x-4 -bottom-4 h-full rounded-4xl bg-gray-950/10 blur-xl transition-all group-hover:blur-2xl" />
 
                 <div className="
                     relative z-10 aspect-square overflow-hidden rounded-3xl md:rounded-[2.5rem] 
@@ -42,11 +35,10 @@ export function About() {
                     <div className="h-1 w-6 md:w-8 rounded-full bg-gray-200" />
                     <div className="h-2 w-2 md:h-3 md:w-3 rounded-full border-2 border-gray-100 ml-auto" />
                   </div>
-                  
-                  {/* Container Illustration : Responsive via scale */}
+
                   <div className="flex-1 flex items-center justify-center p-4">
-                    <div className="scale-75 sm:scale-90 md:scale-100 transition-transform">
-                      <Illustration  className="drop-shadow-xl" />
+                    <div className="scale-90 sm:scale-95 md:scale-100 transition-transform">
+                      <Illustration className="drop-shadow-xl" />
                     </div>
                   </div>
 
@@ -61,9 +53,9 @@ export function About() {
               </div>
             </div>
 
-            {/* Module DROITE : Texte / Console */}
-            <div className="flex flex-col rounded-[1.5rem] md:rounded-[2.5rem] bg-white p-6 sm:p-8 md:p-14 shadow-sm border-t border-white">
-              
+
+            <div className="flex flex-col rounded-3xl md:rounded-[2.5rem] bg-white p-6 sm:p-8 md:p-14 shadow-sm border-t border-white">
+
               <div className="flex flex-col gap-2 mb-6 md:mb-10">
                 <span className="font-mono text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">
                   // 01.Background_info
@@ -88,8 +80,6 @@ export function About() {
                   ))}
                 </div>
               </div>
-
-              {/* Zone d'action responsive : Stack en mobile, Row en tablette/desktop */}
               <div className="mt-8 md:mt-auto pt-8 md:pt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
                 <div className="w-full sm:w-auto">
                   <Button href="#contact" variant="accent" showChevron={true} className="w-full justify-center">
