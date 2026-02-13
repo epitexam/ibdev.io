@@ -9,59 +9,107 @@ const ABOUT_PARAGRAPHS = [
 
 export function About() {
   return (
-    <section
-      id="about"
-      className="relative border-y border-gray-900/10 bg-white/5 backdrop-blur-sm overflow-hidden"
-    >
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-5 py-20 md:grid-cols-2 lg:px-12">
+    <section id="about" className="relative bg-[#F8F9FA] overflow-hidden py-12 md:py-24">
+      {/* Container principal : Padding adaptatif */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        
+        {/* Le Châssis : Arrondis réduits sur mobile pour gagner de l'espace */}
+        <div className="rounded-[2rem] md:rounded-[3rem] bg-[#E2E8F0]/50 border border-white/50 p-3 sm:p-4 md:p-8 shadow-2xl">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 md:gap-8">
 
-        {/* Colonne Gauche : Illustration 3D Blocky */}
-        <div className="relative group flex justify-center md:justify-end order-2 md:order-1">
-          <div className="absolute -top-4 z-20 md:right-4">
-            <StatusBadge label="Live_System" color="green" />
-          </div>
+            {/* Module GAUCHE : Illustration / Device */}
+            <div className="relative flex flex-col items-center justify-center rounded-[1.5rem] md:rounded-[2.5rem] bg-[#CBD5E1]/30 border border-white/20 p-6 sm:p-8 md:p-12 shadow-inner min-h-[350px] md:min-h-[500px]">
+              
+              {/* StatusBadge : Taille adaptée et position fixe */}
+              <div className="absolute top-4 left-4 md:top-8 md:left-8">
+                <StatusBadge color="blue" />
+              </div>
 
-          <div className="relative z-10 overflow-hidden rounded-2xl border-2 border-gray-900 bg-white p-6 shadow-[12px_12px_0_0_#1A1A1A] transition-all duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
-            <Illustration width={320} height={280} />
+              {/* Frame de l'Illustration : Scaling intelligent */}
+              <div className="relative group w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px]">
+                {/* Ombre portée */}
+                <div className="absolute inset-x-4 -bottom-4 h-full rounded-[2rem] bg-gray-950/10 blur-xl transition-all group-hover:blur-2xl" />
+
+                <div className="
+                    relative z-10 aspect-square overflow-hidden rounded-3xl md:rounded-[2.5rem] 
+                    bg-white border-t-4 md:border-t-8 border-white
+                    shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1),0_8px_0_0_#CBD5E1]
+                    md:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_0_0_#CBD5E1]
+                    flex flex-col
+                ">
+                  <div className="h-8 md:h-12 border-b border-gray-100 flex items-center px-4 md:px-6 gap-2">
+                    <div className="h-1 w-6 md:w-8 rounded-full bg-gray-200" />
+                    <div className="h-2 w-2 md:h-3 md:w-3 rounded-full border-2 border-gray-100 ml-auto" />
+                  </div>
+                  
+                  {/* Container Illustration : Responsive via scale */}
+                  <div className="flex-1 flex items-center justify-center p-4">
+                    <div className="scale-75 sm:scale-90 md:scale-100 transition-transform">
+                      <Illustration  className="drop-shadow-xl" />
+                    </div>
+                  </div>
+
+                  <div className="p-4 md:p-6 pt-0 flex justify-center">
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4].map(i => (
+                        <div key={i} className={`h-0.5 md:h-1 w-3 md:w-4 rounded-full ${i === 4 ? 'bg-[#E15A3E]' : 'bg-gray-100'}`} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Module DROITE : Texte / Console */}
+            <div className="flex flex-col rounded-[1.5rem] md:rounded-[2.5rem] bg-white p-6 sm:p-8 md:p-14 shadow-sm border-t border-white">
+              
+              <div className="flex flex-col gap-2 mb-6 md:mb-10">
+                <span className="font-mono text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+                  // 01.Background_info
+                </span>
+                <div className="h-1 w-10 md:h-1.5 md:w-12 bg-gray-900 rounded-full" />
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-[1000] tracking-tighter text-gray-950 uppercase leading-[0.9] mb-6 md:mb-8">
+                A PROPOS
+              </h2>
+
+              <div className="space-y-6 md:space-y-8">
+                <p className="text-lg sm:text-xl md:text-2xl font-bold leading-tight text-gray-800 tracking-tight">
+                  Building <span className="text-[#E15A3E]">scalable solutions</span> with an engineering mindset.
+                </p>
+
+                <div className="space-y-4 md:space-y-6">
+                  {ABOUT_PARAGRAPHS.map((text, i) => (
+                    <p key={i} className="text-sm md:text-base leading-relaxed text-gray-500 font-medium max-w-lg">
+                      {text}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Zone d'action responsive : Stack en mobile, Row en tablette/desktop */}
+              <div className="mt-8 md:mt-auto pt-8 md:pt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                <div className="w-full sm:w-auto">
+                  <Button href="#contact" variant="accent" showChevron={true} className="w-full justify-center">
+                    GET IN TOUCH
+                  </Button>
+                </div>
+
+                <div className="flex flex-col gap-1 px-2 border-l-2 border-gray-50">
+                  <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest leading-none">
+                    protocol_init: active
+                  </span>
+                  <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest leading-none">
+                    node_status: optimal
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        {/* Colonne Droite : Contenu Texte */}
-        <div className="flex flex-col items-start order-1 md:order-2">
-
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E15A3E]">
-              01 // Background
-            </span>
-            <div className="h-px w-12 bg-gray-200" />
-          </div>
-
-          <h2 className="text-4xl font-black tracking-tighter text-gray-950 md:text-5xl uppercase leading-[0.9]">
-            A propos
-            <span className="not-italic text-lg font-bold block text-gray-400 tracking-tight mt-3 lowercase">
-              Building scalable solutions with an engineering mindset.
-            </span>
-          </h2>
-
-          <div className="mt-10 space-y-6">
-            {ABOUT_PARAGRAPHS.map((text, i) => (
-              <p key={i} className="text-lg leading-relaxed text-gray-600 font-medium max-w-lg border-l-2 border-gray-100 pl-6 hover:border-[#E15A3E] transition-colors duration-300">
-                {text}
-              </p>
-            ))}
-          </div>
-
-          <div className="mt-12">
-            <Button
-              href="#contact"
-              variant="accent"
-              showChevron={true}
-            >
-              Get in touch
-            </Button>
-          </div>
-        </div>
-
       </div>
     </section>
   );

@@ -43,11 +43,12 @@ export function Navbar() {
                 </nav>
 
 
-                <div className="hidden md:block pr-1">
+                <div className="hidden md:block">
                     <Button
                         href={RESUME_URL}
                         external
                         showChevron={true}
+                        variant="primary"
                     >
                         My resume
                     </Button>

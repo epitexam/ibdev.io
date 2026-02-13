@@ -8,7 +8,7 @@ export function Hero() {
     return (
         <section
             id="hero"
-            className="relative flex flex-col items-center justify-center px-6 pt-15 pb-20 text-center min-h-[20vh]"
+            className="relative flex flex-col items-center justify-center px-6 pt-25 pb-25 text-center min-h-[20vh]"
         >
 
             <div className="relative mb-10">
