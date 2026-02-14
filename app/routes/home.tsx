@@ -4,6 +4,7 @@ import { About } from "~/components/organisms/About";
 import { Skills } from "~/components/organisms/Skills";
 import { FAQ } from "~/components/organisms/Faq";
 import { Contact } from "~/components/organisms/Contact";
+import { Experience } from "~/components/organisms/Experience";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -18,8 +19,9 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+      <Experience />
       <FAQ />
-      <Contact/>
+      <Contact />
     </>
   );
 }
