@@ -12,31 +12,31 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAncho
 
 const variantStyles: Record<Variant, string> = {
     primary: `
-        bg-[#1A1A1A] text-white 
-        border-t border-white/10
-        shadow-[0_4px_0_0_#000000] 
-        hover:shadow-[0_2px_0_0_#000000]
-        hover:translate-y-[2px]
+        bg-[#1F2937] text-white 
+        border-[#374151]
+        shadow-[0_3px_0_0_#111827] 
+        hover:shadow-[0_2px_0_0_#111827]
+        hover:translate-y-[1px]
         active:shadow-none
-        active:translate-y-[4px]
+        active:translate-y-[3px]
     `,
     outline: `
-        bg-white text-[#1A1A1A] 
-        border-t border-gray-100
-        shadow-[0_4px_0_0_#D1D5DB] 
-        hover:shadow-[0_2px_0_0_#D1D5DB]
-        hover:translate-y-[2px]
+        bg-white text-[#1F2937] 
+        border-gray-200
+        shadow-[0_3px_0_0_#E5E7EB] 
+        hover:shadow-[0_2px_0_0_#E5E7EB]
+        hover:translate-y-[1px]
         active:shadow-none
-        active:translate-y-[4px]
+        active:translate-y-[3px]
     `,
     accent: `
         bg-[#E15A3E] text-white 
-        border-t border-white/20
-        shadow-[0_4px_0_0_#b3432d] 
+        border-[#f37e66]
+        shadow-[0_3px_0_0_#b3432d] 
         hover:shadow-[0_2px_0_0_#b3432d]
-        hover:translate-y-[2px]
+        hover:translate-y-[1px]
         active:shadow-none
-        active:translate-y-[4px]
+        active:translate-y-[3px]
     `
 };
 
@@ -52,10 +52,11 @@ export function Button({
 }: ButtonProps) {
     const base = `
         relative inline-flex items-center justify-center gap-2
-        px-6 py-2.5 rounded-lg
-        text-sm font-black uppercase tracking-tight
-        transition-all duration-100 
+        px-4 py-2 md:px-6 md:py-2.5 rounded-lg
+        text-[11px] md:text-sm font-[1000] uppercase tracking-tighter md:tracking-tight
+        transition-all duration-75 
         select-none cursor-pointer
+        border-t-2 /* L'effet de relief brillant sur le dessus */
         
         /* État désactivé */
         disabled:opacity-50 disabled:pointer-events-none disabled:shadow-none disabled:translate-y-0
@@ -65,12 +66,12 @@ export function Button({
 
     const content = (
         <>
-            {children}
+            <span className="relative -top-px">{children}</span>
             {showChevron && (
                 <ChevronRight
-                    size={16}
+                    size={14}
                     strokeWidth={3}
-                    className="transition-transform group-hover:translate-x-0.5"
+                    className="transition-transform group-hover:translate-x-0.5 md:w-4 md:h-4"
                 />
             )}
         </>

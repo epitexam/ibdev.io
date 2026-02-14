@@ -47,7 +47,7 @@ export function Navbar() {
                     <Button
                         href={RESUME_URL}
                         external
-                        showChevron={true}
+                        showChevron={false}
                         variant="primary"
                     >
                         My resume

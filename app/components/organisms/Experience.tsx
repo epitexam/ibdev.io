@@ -4,7 +4,7 @@ import { ExperienceCard } from "../molecules/ExperienceCard";
 
 export function Experience() {
     return (
-        <section id="experience" className="relative  py-20 md:py-32 overflow-hidden">
+        <section id="experience" className="relative  py-15 md:py-25 overflow-hidden">
             <div className="absolute left-0 top-1/4 h-64 w-px bg-linear-to-b from-transparent via-[#E15A3E]/10 to-transparent" />
 
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
