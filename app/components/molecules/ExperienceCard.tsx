@@ -10,12 +10,11 @@ interface ExperienceCardProps {
 export function ExperienceCard({ experience }: ExperienceCardProps) {
     return (
         <div className="
-            group relative flex flex-col gap-6 rounded-[2rem] 
+            group relative flex flex-col gap-6 rounded-4xl 
             border-2 border-gray-100 bg-white p-6 md:p-8 
             shadow-[0_8px_0_0_#F3F4F6] transition-all duration-300
             hover:-translate-y-1 hover:shadow-[0_12px_0_0_#F3F4F6]
         ">
-            {/* Indicateur de statut visuel */}
             <div className="absolute top-8 right-8 h-2 w-2 rounded-full bg-[#E15A3E] opacity-20 group-hover:opacity-100 transition-opacity" />
 
             <ExperienceHeader

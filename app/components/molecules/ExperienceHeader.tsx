@@ -4,11 +4,11 @@ import { DateBadge } from "../atoms/DateBadge";
 import { CompanyLogo } from "../atoms/CompanyLogo";
 
 interface ExperienceHeaderProps {
-  company: string;
-  role: string;
-  period: string;
-  location?: string;
-  logo?: string;
+    company: string;
+    role: string;
+    period: string;
+    location?: string;
+    logo?: string;
 }
 
 export function ExperienceHeader({ company, role, period, location, logo }: ExperienceHeaderProps) {
@@ -18,7 +18,7 @@ export function ExperienceHeader({ company, role, period, location, logo }: Expe
 
             <div className="flex flex-1 flex-col gap-2 min-w-0">
                 <div className="flex flex-col">
-                    <h3 className="text-xl md:text-2xl font-[1000] tracking-tighter text-gray-900 uppercase leading-tight break-words">
+                    <h3 className="text-xl md:text-2xl font-[1000] tracking-tighter text-gray-900 uppercase leading-tight wrap-break-word">
                         {role}
                     </h3>
                     <p className="text-sm font-black text-[#E15A3E] uppercase tracking-widest opacity-80">
