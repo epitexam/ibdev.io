@@ -1,4 +1,4 @@
-import { TechBadge } from "../atoms/TechBadge";
+import { SkillBadge } from "../atoms/SkillBadge";
 
 interface TechStackProps {
     technologies: string[];
@@ -15,7 +15,7 @@ export function TechStack({ technologies }: TechStackProps) {
                 </span>
                 <div className="flex flex-wrap gap-2">
                     {technologies.map((tech) => (
-                        <TechBadge key={tech} name={tech} />
+                        <SkillBadge key={tech} name={tech} />
                     ))}
                 </div>
             </div>
